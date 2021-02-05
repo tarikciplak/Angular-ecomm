@@ -1,0 +1,304 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container-fluid">
+
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-3 ">
+        <!--category-->
+        <!-- ASIDE -->
+
+        <div id="aside" class="col">
+          <!-- aside Widget -->
+          <div class="aside">
+            <h3 class="aside-title">Categories</h3>
+            <div class="checkbox-filter">
+              
+             
+              <div class="input-checkbox" *ngFor="let category of categories;" >
+                <input type="checkbox"  id="{{category}}" >
+                <label for="{{category}}">
+                  <a  (click)="filterCategory(category)"><span></span>
+                  {{category}}
+                  <small>(120)</small></a>
+                  
+                  
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- /aside Widget -->
+
+          <!-- aside Widget -->
+          <div class="aside">
+            <h3 class="aside-title">Price</h3>
+            <div class="input-checkbox disabled" *ngFor="let price of pricefilter;">
+              <input type="checkbox" id="{{price}}">
+              <label for="{{price}}">
+                <span></span>
+                {{price}}
+
+              </label>
+            </div>
+           
+
+
+          </div>
+          <!-- /aside Widget -->
+
+          <!-- aside Widget -->
+          <div class="aside">
+            <h3 class="aside-title">Brand</h3>
+            <div class="checkbox-filter">
+              <div class="input-checkbox">
+                <input type="checkbox" id="brand-1">
+                <label for="brand-1">
+                  <span></span>
+                  SAMSUNG
+                  <small>(578)</small>
+                </label>
+              </div>
+              <div class="input-checkbox">
+                <input type="checkbox" id="brand-2">
+                <label for="brand-2">
+                  <span></span>
+                  LG
+                  <small>(125)</small>
+                </label>
+              </div>
+              <div class="input-checkbox">
+                <input type="checkbox" id="brand-3">
+                <label for="brand-3">
+                  <span></span>
+                  SONY
+                  <small>(755)</small>
+                </label>
+              </div>
+              <div class="input-checkbox">
+                <input type="checkbox" id="brand-4">
+                <label for="brand-4">
+                  <span></span>
+                  SAMSUNG
+                  <small>(578)</small>
+                </label>
+              </div>
+              <div class="input-checkbox">
+                <input type="checkbox" id="brand-5">
+                <label for="brand-5">
+                  <span></span>
+                  LG
+                  <small>(125)</small>
+                </label>
+              </div>
+              <div class="input-checkbox">
+                <input type="checkbox" id="brand-6">
+                <label for="brand-6">
+                  <span></span>
+                  SONY
+                  <small>(755)</small>
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- /aside Widget -->
+
+
+        </div>
+
+
+        <!-- /ASIDE -->
+
+
+      </div>
+      <div class="col-md-7 mt-3">
+        <div class="row">
+          <div class="col-md-4 col-sm-4" *ngFor="let product of products">
+            <section class="cards">
+
+              <article class="card card--1">
+                <div class="card__info-hover">
+                  <svg class="card__like" viewBox="0 0 24 24">
+                    <path fill="#000000"
+                      d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+                  </svg>
+                  <div class="card__clock-info">
+                    <svg class="card__clock" viewBox="0 0 24 24">
+                      <path
+                        d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39M11,14H13V8H11M15,1H9V3H15V1Z" />
+                    </svg><span class="card__time">15 min</span>
+                  </div>
+
+
+                </div>
+
+                <img [src]="product.imageUrl" alt="product.productName" width="322" height="280">
+                <a (click)="selectProduct(product.id)" routerLinkActive="router-link-active" class="card_link">
+                  <div class="card__img--hover">
+
+                  </div>
+                </a>
+
+
+                <div class="card__info">
+                  <span class="card__category"> {{product.category}}</span>
+                  <h5 class="card__title"> {{product.productName}} </h5>
+                  <span class="card__price"><a href="#" class="card__author"
+                      title="author">{{product.price  | currency:'TRY'  }}</a></span>
+                  <div class="buttons">
+                    <div class="btn container">
+                      <button class="btn effect01 btn-outline-primary btn-sm btn-block"
+                        [class.disabled]="product.quantity < 1" [class.btn-outline-danger]="product.quantity < 1"
+                        (click)="addToCart(product.id)" [disabled]="product.quantity < 1">
+                        {{ product.quantity < 1 ? "Stokta Yok" : "Sepete ekle"}}
+                      </button>
+
+
+                    </div>
+                  </div>
+
+                </div>
+              </article>
+            </section>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-2 mt-5">
+        <!--sepet-->
+        <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
+          <div class="product-widget" *ngFor="let c of cartData.data; let i=index">
+            <div class="product-img">
+              <img [src]="c.product?.imageUrl" alt="c.product.productName" width="20px">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name"><a href="#">{{c.product.productName}}</a></h3>
+              <h4 class="product-price"><span class="qty">{{c.numInCart}}</span>{{c.product?.price | currency:'TRY'}}
+              </h4>
+            </div>
+            <button class="delete" (click)="cartservice.DeleteProductFromCart(i)"><i class="fa fa-close"></i></button>
+          </div>
+        </div>
+        <div class="cart-summary">
+          <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length: 0}} Adet Ürün </small>
+          <h5>TOPLAM: {{ cartTotal | currency:'TRY' }} </h5>
+        </div>
+        <div class="cart-btns">
+
+          <a href='/checkout'>Siparişi Tamamla<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+
+
+    </div>
+  </div>
+
+</div>
+<!-- /container -->
+
+<!-- /SECTION -->
+
+<!-- HOT DEAL SECTION -->
+<div id="hot-deal" class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="hot-deal">
+          <ul class="hot-deal-countdown">
+            <li>
+              <div>
+                <h5>02</h5>
+                <span>Days</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h5>10</h5>
+                <span>Hours</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h5>34</h5>
+                <span>Mins</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h5>60</h5>
+                <span>Secs</span>
+              </div>
+            </li>
+          </ul>
+          <h5 class="text-uppercase">hot deal this week</h5>
+          <p>New Collection Up to 50% OFF</p>
+          <a class="primary-btn cta-btn" href="#">Shop now</a>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /HOT DEAL SECTION -->
+
+
+<!-- NEWSLETTER -->
+<div id="newsletter" class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="newsletter">
+          <p>Sign Up for the <strong>NEWSLETTER</strong></p>
+          <form>
+            <input class="input" type="email" placeholder="Enter Your Email">
+            <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+          </form>
+          <ul class="newsletter-follow">
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-pinterest"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /NEWSLETTER -->

@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="card mt-5">
+        
+            <div class="card-body md-5">
+                <form class="form-login" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                    <div class="text-center mb-4">
+                        <img class="mb-4" src="assets/svg/login.svg" alt="" width="300" height="90">
+                        <h1 class="h3 mb-3 font-weight-normal">Üye Girişi</h1>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input type="email" #email="ngModel"  [(ngModel)]="model.email" id="email"
+                            name="email" class="form-control"  placeholder="Email address" required autofocus>
+                        <label for="inputEmail" class="visually-hidden">Email adresiniz</label>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input type="password" #password="ngModel" [(ngModel)]="model.password" id="password"
+                            name="password" class="form-control" placeholder="Password" required>
+                        <label for="inputPassword">Password</label>
+                    </div>
+
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+                    <h6 class="mt-5 mb-3 text-muted text-center">&copy; 2020 MMT company</h6>
+                </form>
+            </div>
+      
+
+    </div>
+
+    <div class="card mt-5" style="display: flex; margin: 20px;">
+        <div class="card-body md-5">
+            <form class="form-register" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="assets/svg/login.svg" alt="" width="300" height="90">
+                    <h1 class="h3 mb-3 font-weight-normal">Ücretsiz Üye Ol</h1>
+
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend ">
+                        <span class="input-group-text">Adınız ve soyadınız</span>
+                    </div>
+                    <input type="text" #firstname="ngModel" [(ngModel)]="model.firstname" id="firstname"
+                        name="firstname" aria-label="First name" class="form-control">
+                    <input type="text" #lastname="ngModel" [(ngModel)]="model.lastname" id="lastname" name="lastname" 
+                        aria-label="Last name" class="form-control">
+                </div>
+                <div class="form-label-group">
+                    <input type="email" id="emailReg" #emailReg="ngModel" [(ngModel)]="model.email" name="emailReg"
+                        class="form-control" placeholder="Email address" required>
+                    <label for="inputEmail" class="visually-hidden">Email adresiniz</label>
+                </div>
+
+                <div class="form-label-group">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <label for="inputPassword">Şifreniz</label>
+                </div>
+                <div class="form-label-group">
+                    <input type="password" id="passwordRed" #passwordReg="ngModel" [(ngModel)]="model.password" name="passwordRed"
+                        class="form-control" placeholder="Password" required>
+                    <label for="inputPassword">Şifre tekrarı</label>
+                </div>
+
+
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Üye ol</button>
+                <h6 class="mt-2 mb-1 text-muted text-center" style="font-size: revert;">&copy; Üye ol butonuna basarak
+                    Üyelik Sözleşmesini, Gizlilik
+                    ve
+                    Çerez Politikasını kabul ettiğinizi onaylıyorsunuz.</h6>
+
+            </form>
+        </div>
+    </div>
+</div>
